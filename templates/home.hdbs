@@ -1,1 +1,5 @@
-{{iframe "http://localhost:4567/box.html"}}
+{{iframe (assetURL 'box.html')}}
+<br><br>
+<div class="files">
+
+</div>

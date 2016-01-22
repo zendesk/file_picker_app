@@ -23,6 +23,7 @@
       var loc = this.currentLocation();
       console.dir(loc);
       if(loc == 'nav_bar') {
+        // if it's the nav bar
         this.switchTo('nav_bar_home', {
           uri: 'https://app.box.com/embed_widget/files/0/f/0'
         });
@@ -31,28 +32,20 @@
       }
     },
     onFileSelected: function(e, files) {
-      console.log('File Selected and returned to Zendesk app');
-      console.dir(files);
       files = _.map(files, function(file) {
         file.folder = file.type == 'folder';
         return file;
       });
-      // insert the links
-      // TODO make the below loop conditional on a setting?
-      // if( this.setting("auto") ) {
-      //   
-      // }
       _.each(files, function(file) {
         this.insertLink(file);
       }, this);
       this.renderFiles(files);
     },
     renderFiles: function(files) {
-      console.log('Rendering Files');
-      
-      this.switchTo('files', {
+      var html = this.renderTemplate('files', {
         files: files
       });
+      this.$('div.files').html(html);
     },
     insertLinkClicked: function(e) {
       console.dir(e);
