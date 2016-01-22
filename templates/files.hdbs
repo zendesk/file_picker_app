@@ -1,0 +1,17 @@
+<ul class="file_list">
+{{#each files}}
+  <li>
+    
+    <span class="link">
+      {{#if folder}}
+        <i class="icon-folder-close"></i>
+      {{else}}
+        <i class="icon-file"></i>
+      {{/if}}
+      <a href="{{url}}">{{name}}</a>
+    </span>
+    <button class="btn pull-right insert_link" data-file-uri="{{url}}" data-file-name="{{name}}"><i class="icon-share"></i></button>
+    {{!-- <button class="btn attach_file">attach <i class="icon-share-alt"></i></button> --}}
+  </li>
+{{/each}}
+</ul>

@@ -1,0 +1,25 @@
+<script type="text/javascript" src="https://app.box.com/js/static/select.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+<script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/latest/zaf_sdk.js"></script>
+<script type="text/javascript">
+  var app = window.ZAFClient.init(function(context) {
+    var currentUser = context.currentUser;
+  });
+
+  // zendesk app events
+
+  // initialize Box button
+  $(document).ready(function() {
+    var boxSelect = new BoxSelect();
+    // Register a success callback handler
+    boxSelect.success(function(response) {
+      console.log(response);
+      app.postMessage('fileSelected', response);
+    });
+    // Register a cancel callback handler
+    boxSelect.cancel(function() {
+      console.log("The user clicked cancel or closed the popup");
+    });
+  });
+</script>
+<div id="box-select" data-link-type="shared" data-multiselect="true" data-client-id="5zsi7w9j275gg7f444nciy9jfjp50y74"></div>
